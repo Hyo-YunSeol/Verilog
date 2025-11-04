@@ -35,7 +35,8 @@ endmodule
 
 ```
 
-###xdc
+### xdc
+
 ```c
 ## This file is a general .xdc for the Basys3 rev B board
 ## To use it in a project:
