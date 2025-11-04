@@ -1,6 +1,6 @@
 ### adder
 
-```
+```c
 module half_adder (iA, iB, oS, oC);
   input iA, iB;
   output oS, oC;
