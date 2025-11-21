@@ -1,4 +1,4 @@
-###xdc
+### xdc
 
 ```
 ## This file is a general .xdc for the Basys3 rev B board
