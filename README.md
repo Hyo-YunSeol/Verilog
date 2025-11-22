@@ -1,3 +1,18 @@
+#### 팁
+```
+if-always 에서만 사용가능,
+cf. 간단한 if~else: ?:(삼항 연산자)
+case - always 에서만 사용 가능
+always @(posedge CLK) <=(nonblocking assignment) =>시뮬레이션이 잘 됨
+always @ *=>시뮬레이션이 잘 됨
+always A=B+C -A는 reg
+*과 posedge는 같이 못 씀
+assign =
+always*=
+always edge
+initial = 시물레이션 전용
+mux는 case가 더 잘 만들어짐
+```
 # Xdc
 
 ```c
