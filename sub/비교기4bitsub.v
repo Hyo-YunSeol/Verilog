@@ -45,11 +45,32 @@ module sub (
 
 wire [3:0]w;
 
-FA su_0(.iA(A[0]), .iB(~B[0]), .iC(1'b1),   .oS(S[0]), .oC(w[0]));
+FA su_0(.iA(A[0]), .iB(~B[0]), .iC(1'b1), .oS(S[0]), .oC(w[0]));
 FA su_1(.iA(A[1]), .iB(~B[1]), .iC(w[0]), .oS(S[1]), .oC(w[1]));
 FA su_2(.iA(A[2]), .iB(~B[2]), .iC(w[1]), .oS(S[2]), .oC(w[2]));
 FA su_3(.iA(A[3]), .iB(~B[3]), .iC(w[2]), .oS(S[3]), .oC(w[3]));
     
 assign oC= ~w[3];
+
+endmodule
+//비교기
+module CMP_4 (A, B, Tequ, Tneq, Tgth, Tlth, Tgte, Tlte);
+  input [3:0]A;
+  input [3:0]B;
+  output Tequ; // A가 B가 같음
+  output Tneq; // A가 B가 다름
+  output Tgth; // A가 B보다 큼
+  output Tlth; // A가 B보다 작음
+  output Tgte; // A가 B보다 크거나 같음
+  output Tlte; // A가 B보다 작거나 같음
+
+  wire [3:0] tR;
+  sub sub_4(.A(A), .B(B), .S(tR));
+  assign Tequ = ~(tR[3]|tR[2]|tR[1]|tR[0]);
+  assign Tneq = ~ Tequ;
+  assign Tgth = ~tR[3] & (tR[2]|tR[1]|tR[0]);
+  assign Tlth = tR[3];
+  assign Tgte = ~ Tlth;
+  assign Tlte = Tlth | Tequ;
 
 endmodule
